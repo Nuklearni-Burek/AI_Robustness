@@ -1,80 +1,76 @@
-CAN-Triggered Real-Time Vehicle Detection for Robustness Evaluation
-Abstract
+# 🚗 CAN-Triggered Real-Time Vehicle Detection for Robustness Evaluation
 
-This project presents a real-time vehicle detection framework developed for the robustness evaluation of YOLO-based object detection models in controlled automotive scenarios. The system integrates industrial image acquisition with CAN-based session triggering to enable structured and repeatable measurement procedures.
+## Abstract
 
-The current implementation is based on YOLOv10n, with planned comparative evaluation using YOLOv26.
+This project presents a real-time vehicle detection framework developed for robustness evaluation of YOLO-based object detection models in controlled automotive scenarios. The system integrates industrial image acquisition with CAN-based session triggering to enable structured and repeatable measurement procedures.
 
-Experimental Setup
-Image Acquisition
+The current implementation is based on **YOLOv10n**, with planned comparative evaluation using **YOLOv26**.
 
-Images are acquired using a Basler industrial camera via the pypylon SDK.
+---
+
+## Experimental Setup
+
+### Image Acquisition
+
+Images are acquired using a Basler industrial camera via the `pypylon` SDK.  
 The camera operates at 5 FPS and records raw images exclusively during CAN-triggered measurement sessions.
 
-Session Control
+### Session Control (CAN Bus)
 
-Measurement sessions are controlled via CAN bus communication:
+Measurement sessions are controlled via CAN communication:
 
-Arbitration ID: 0x7B
+- Arbitration ID: `0x7B`  
+- Signal `2` → Start session  
+- Signal `1` → Stop session  
 
-Signal 2 → Start session
+This ensures deterministic and reproducible recording conditions similar to real automotive environments.
 
-Signal 1 → Stop session
+### Object Detection
 
-This design ensures deterministic and reproducible recording conditions.
+Vehicle detection is performed using the Ultralytics implementation of **YOLOv10n** with a confidence threshold of 0.5.
 
-Object Detection
-
-Vehicle detection is performed using the Ultralytics implementation of YOLOv10n with a confidence threshold of 0.5.
 For each detection, the following parameters are stored:
 
-Class label
+- Class label  
+- Confidence score  
+- Bounding box coordinates  
 
-Confidence score
+All results are exported to structured Excel files for statistical robustness analysis.
 
-Bounding box coordinates
+---
 
-Detection results are exported to structured Excel files for statistical analysis.
-
-Test Vehicles
+## Test Vehicles
 
 Robustness evaluation was conducted using six vehicles with diverse geometrical characteristics:
 
-Mercedes EQE
+- Mercedes EQE  
+- Škoda Enyaq  
+- Mazda MX-5  
+- Seat Cordoba  
+- Opel Movano  
+- Mercedes-Benz G-Klasse (Puch variant)  
 
-Škoda Enyaq
+Repeated measurements were performed to analyze:
 
-Mazda MX-5
+- Confidence stability  
+- Detection consistency  
+- Class robustness across varying vehicle shapes and sizes  
 
-Seat Cordoba
+---
 
-Opel Movano
+## Demonstration Videos
 
-Mercedes-Benz G-Klasse (Puch variant)
+Experimental recordings demonstrating real-time detection performance are available on YouTube:
 
-These vehicles were repeatedly measured to analyze:
+- [Session Recording 1](https://youtube.com/shorts/U2rkALwhL6I?feature=share)
+- [Session Recording 2](https://youtube.com/shorts/GvZ0LtC1vl4?feature=share)
+- [Session Recording 3](https://youtube.com/shorts/oZ7OU-YTM7g?feature=share)
 
-Confidence stability
+Each video shows YOLO-based vehicle detection running on images captured with the Basler camera under natural daylight conditions.
 
-Detection consistency
+---
 
-Class robustness across varying vehicle shapes and sizes
+## Output Structure
 
-Demonstration Videos
+Each CAN-triggered session generates:
 
-The repository includes three experimental recordings:
-
-- [output2.mp4](./output2.mp4)
-- [output3.mp4](./output3.mp4)
-- [output6.mp4](./output6.mp4)
-
-
-Each video demonstrates real-time detection performance under natural daylight conditions using the Basler camera setup.
-
-Research Objective
-
-The objective of this bachelor thesis is:
-
-To conduct a comparative robustness analysis of YOLO-based vehicle detection models under controlled automotive measurement conditions.
-
-Future work includes integration of YOLOv26 and statistical cross-model comparison based on confidence distributions and detection reliability metrics.
