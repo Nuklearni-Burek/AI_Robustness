@@ -60,11 +60,11 @@ Repeated measurements were performed to analyze:
 
 ## Demonstration Videos
 
-Experimental recordings demonstrating real-time detection performance are available on YouTube:
+[![Session 1](https://img.youtube.com/vi/U2rkALwhL6I/maxresdefault.jpg)](https://youtube.com/shorts/U2rkALwhL6I?feature=share)
+[![Session 2](https://img.youtube.com/vi/GvZ0LtC1vl4/maxresdefault.jpg)](https://youtube.com/shorts/GvZ0LtC1vl4?feature=share)
+[![Session 3](https://img.youtube.com/vi/oZ7OU-YTM7g/maxresdefault.jpg)](https://youtube.com/shorts/oZ7OU-YTM7g?feature=share)
 
-- [Session Recording 1](https://youtube.com/shorts/U2rkALwhL6I?feature=share)
-- [Session Recording 2](https://youtube.com/shorts/GvZ0LtC1vl4?feature=share)
-- [Session Recording 3](https://youtube.com/shorts/oZ7OU-YTM7g?feature=share)
+
 
 Each video shows YOLO-based vehicle detection running on images captured with the Basler camera under natural daylight conditions.
 
